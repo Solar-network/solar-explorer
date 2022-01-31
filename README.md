@@ -1,1 +1,1 @@
-# explorer-sh
+# Solar Explorer
