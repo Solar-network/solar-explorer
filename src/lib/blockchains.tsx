@@ -40,7 +40,7 @@ export const Blockchains = [
         slp_url:"",
         coingecko_id: "",
         url: "https://sxp.testnet.sh/api/",
-        subdomain: "dsxp"
+        subdomain: "devnet"
       },
     ]
   },
