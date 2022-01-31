@@ -12,10 +12,11 @@ import {
 } from "./Cells";
 import explorer from "../../lib/api";
 import { MdArrowBackIos, MdArrowForwardIos } from "react-icons/md";
+import { Blockchains } from "../../lib/blockchains";
 
 const { lang } = i18n;
 const { navigation } = lang;
-type LatestBlocksTableState = {blocks:Array<any>, meta: any, interval: any, currentPage: number, pager: Array<any>, loading:boolean}
+type LatestBlocksTableState = {blocks:Array<any>, meta: any, interval: any, currentPage: number, pager: Array<any>, loading:boolean, network: any}
 
 class LatestBlocksTable extends React.Component<{}, LatestBlocksTableState> {
   static contextType = BlockchainContext;
@@ -28,7 +29,8 @@ class LatestBlocksTable extends React.Component<{}, LatestBlocksTableState> {
       interval: null,
       currentPage: 1,
       pager: [],
-      loading: true
+      loading: true,
+      network: {symbol:""}
     };
     this.getData = this.getData.bind(this);
     this.goFirst = this.goFirst.bind(this);
@@ -90,6 +92,7 @@ class LatestBlocksTable extends React.Component<{}, LatestBlocksTableState> {
   componentDidMount() {
   
     let blockchain = this.context;
+    this.setState({network:Blockchains.find((bc) => bc.networks.find((network) => network.subdomain == blockchain)).networks.find((network) => network.subdomain == blockchain)})
 
     const getData = () => {
       explorer.on(blockchain).core
@@ -169,7 +172,7 @@ class LatestBlocksTable extends React.Component<{}, LatestBlocksTableState> {
                 className="bg-quartish dark:bg-dark-quartish dark:hover:bg-dark-hoverish dark:even:bg-dark-evenish hover:bg-hoverish cursor-pointer even:bg-evenish w-full h-10 z-10"
               >
                 <td className="text-center">
-                  <BlockId id={block.id}/>
+                  <BlockId id={block.id} className="justify-center"/>
                 </td>
                 <td className="text-center">
                   {parseInt(block.height).toLocaleString("us")}
@@ -184,7 +187,7 @@ class LatestBlocksTable extends React.Component<{}, LatestBlocksTableState> {
                   {block.transactions}
                 </td>
                 <td className="text-center">
-                  {parseInt(block.forged.reward)/100000000} ARK
+                  {parseInt(block.forged.reward)/100000000} {this.state.network.symbol}
                 </td>
               </tr>
             ))}

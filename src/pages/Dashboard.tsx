@@ -303,7 +303,7 @@ class Dashboard extends React.Component<{}, any> {
                     <div className="my-3">
                       <span className="text-1xl">Delegates forging</span>
                       <br />
-                      <span className="text-greenish text-3xl">51/51</span>
+                      <span className="text-greenish text-3xl">53/53</span>
                     </div>
                     <div className="my-3">
                       <span className="text-1xl">Core version</span>
@@ -441,7 +441,7 @@ class Dashboard extends React.Component<{}, any> {
                   ))}
                 </div>
                 <a
-                  href={`/${this.context}/blocks`}
+                  href={`/${this.context}/transactions`}
                   className="bg-greenish text-white rounded text-center drop-shadow-md w-full p-2 inline-block"
                 >
                   See all blocks

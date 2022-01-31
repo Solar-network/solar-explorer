@@ -50,7 +50,7 @@ class DelegatesTable extends React.Component<{status: string}, DelegatesTableSta
       currentPage: 1,
       pager: [],
       loading: true,
-      network: {}
+      network: {symbol:""}
     };
     this.getData = this.getData.bind(this);
     this.goFirst = this.goFirst.bind(this);

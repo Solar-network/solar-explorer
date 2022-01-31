@@ -34,11 +34,11 @@ export const ShortCopy = ({ text }: ShortCopyProps) => {
 );
   }
 
-type BlockIdProps = { id: string };
-export const BlockId = ({ id }: ShortIdProps) => {
+type BlockIdProps = { id: string, className?: string };
+export const BlockId = ({ id, className = "" }: BlockIdProps) => {
   let blockchain = useContext(BlockchainContext)
   return (
-  <div className="justify-center w-full flex">
+  <div className={`${className} w-full flex`}>
     <a href={`/${blockchain}/blocks/${id}`} className="text-greenish hover:text-greenish hover:underline">{`${id.substr(0, 10)}...${id.substr(-10)}`}</a>
   </div>
 );}

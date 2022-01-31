@@ -46,9 +46,11 @@ export const BlockView = () => {
             <span className="">Block ID</span> <br />
             <span className="text-greenish text-ellipsis overflow-hidden">{block.id}</span>
           </div>
-          <div className="grow flex justify-end hidden sm:inline">
-                <a href={`/ark/blocks/${block.previous}`} className="bg-secondary dark:bg-dark-secondary hover:bg-hoverish dark:hover:bg-dark-hoverish py-3 px-4 mx-1 rounded"><MdArrowBackIosNew className="text-xl" /></a>
+          <div className="grow hidden sm:inline ">
+          <div className="flex justify-end">
+          <a href={`/ark/blocks/${block.previous}`} className="bg-secondary dark:bg-dark-secondary hover:bg-hoverish dark:hover:bg-dark-hoverish py-3 px-4 mx-1 rounded"><MdArrowBackIosNew className="text-xl" /></a>
                 {nextBlock[0] && <a href={`/ark/blocks/${nextBlock[0].id}`} className="bg-secondary dark:bg-dark-secondary hover:bg-hoverish dark:hover:bg-dark-hoverish py-3 px-4 mx-1 rounded"><MdArrowForwardIos className="text-xl"/></a>}
+          </div>
           </div>
         </div>
         <div className="sm:grid sm:grid-cols-3 sm:divide-x-2 sm:divide-secondary sm:dark:divide-dark-secondary">

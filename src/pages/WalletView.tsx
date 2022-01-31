@@ -8,6 +8,7 @@ import {
 } from "react-router-dom";
 import {
   Amount,
+  BlockId,
   LongWallet,
   ShortCopy,
   ShortWallet,
@@ -21,6 +22,8 @@ import { Tab } from "@headlessui/react";
 import TransactionsTable from "../components/tables/TransactionsTable";
 import TokenHoldingsTable from "../components/tables/TokenHoldingsTable";
 import TokenOwnershipTable from "../components/tables/TokenOwnershipTable";
+import Delegates from "./Delegates";
+import { Blockchains } from "../lib/blockchains";
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ");
@@ -41,10 +44,13 @@ function WalletView() {
     publicKey: "",
     balance: "",
   });
+  const [delegate, setDelegate] = useState(null)
+  const [network, setNetwork] = useState({symbol:""})
   let blockchain = useContext(BlockchainContext);
 
   useEffect(() => {
     const getData = () => {
+      setNetwork(Blockchains.find((bc:any) => bc.networks.find((nt:any) => nt.subdomain == blockchain)).networks.find((nt:any) => nt.subdomain == blockchain))
       console.log(blockchain);
       explorer
         .on(blockchain)
@@ -52,6 +58,13 @@ function WalletView() {
         .get(wallet_address)
         .then((d) => {
           setWallet(d.body.data);
+        });
+        explorer
+        .on(blockchain)
+        .core.api("delegates")
+        .get(wallet_address)
+        .then((d) => {
+          setDelegate(d.body.data);
         });
     };
     getData();
@@ -102,13 +115,14 @@ function WalletView() {
               </span>
             </div>
             <div>
-              <button className="bg-greenish rounded py-1 px-3 justify-self-end">
+              <button className="bg-greenish rounded py-1 px-3 justify-self-end hidden">
                 <MdQrCode2 className="text-4xl" />
               </button>
             </div>
           </div>
         </div>
       </div>
+      
       <Tab.Group>
         <div className="mx-auto max-w-7xl mt-2">
           <div className="w-full sm:w-2/4 mt-4">
@@ -123,6 +137,11 @@ function WalletView() {
               <Tab key="token_ownership" className={tabClass}>
                 Token Ownership
               </Tab>
+              {delegate &&
+                  <Tab key="delegate" className={tabClass}>
+                  Delegate
+                </Tab>
+              }
             </Tab.List>
           </div>
         </div>
@@ -141,6 +160,43 @@ function WalletView() {
               key="token_ownership"
               className="text-black dark:text-white"
             ><TokenOwnershipTable wallet={wallet_address}/></Tab.Panel>
+            {delegate && 
+            <Tab.Panel
+            key="delegate"
+            className="text-black dark:text-white"
+          >
+            <table className="w-full">
+              <tbody>
+                <tr className="hover:bg-hoverish dark:hover:bg-dark-hoverish cursor-pointer even:bg-evenish dark:even:bg-dark-evenish w-full h-14 z-10">
+                  <td className="pl-4 w-1/4 text-center font-bold">Username</td>
+                  <td>{delegate.username}</td>
+                </tr>
+                <tr className="hover:bg-hoverish dark:hover:bg-dark-hoverish cursor-pointer even:bg-evenish dark:even:bg-dark-evenish w-full h-14 z-10">
+                  <td className="pl-4 w-1/4 text-center font-bold">Votes</td>
+                  <td>{parseInt((parseInt(delegate.votes)/100000000).toFixed(0)).toLocaleString("us")}  {network.symbol} </td>
+                </tr>
+                <tr className="hover:bg-hoverish dark:hover:bg-dark-hoverish cursor-pointer even:bg-evenish dark:even:bg-dark-evenish w-full h-14 z-10">
+                  <td className="pl-4 w-1/4 text-center font-bold">Rank</td>
+                  <td>{delegate.rank}</td>
+                </tr>
+                <tr className="hover:bg-hoverish dark:hover:bg-dark-hoverish cursor-pointer even:bg-evenish dark:even:bg-dark-evenish w-full h-14 z-10">
+                  <td className="pl-4 w-1/4 text-center font-bold">Blocks produced</td>
+                  <td>{delegate.blocks.produced}</td>
+                </tr>
+               {
+                 delegate.blocks.last &&
+                 <tr className="hover:bg-hoverish dark:hover:bg-dark-hoverish cursor-pointer even:bg-evenish dark:even:bg-dark-evenish w-full h-14 z-10">
+                 <td className="pl-4 w-1/4 text-center font-bold">Last produced block</td>
+                 <td><BlockId id={delegate.blocks.last.id}/></td>
+               </tr>
+               }
+                <tr className="hover:bg-hoverish dark:hover:bg-dark-hoverish cursor-pointer even:bg-evenish dark:even:bg-dark-evenish w-full h-14 z-10">
+                  <td className="pl-4 w-1/4 text-center font-bold">Resigned</td>
+                  <td>{delegate.isResigned? <span>yes</span> : <span>no</span>}</td>
+                </tr>
+              </tbody>
+            </table>
+          </Tab.Panel>}
           </Tab.Panels>
         </div>
       </Tab.Group>
