@@ -117,7 +117,7 @@ static contextType = BlockchainContext;
                   </div>
                 </div>
                 <div className="ml-5 hidden sm:inline">
-                <input type="text" className=" appearance-none border-none rounded w-full py-2 px-3 text-gray-100 bg-secondary dark:bg-dark-secondary focus:outline-none " id="searchInput" placeholder="Search in the blockchain..." onChange={this.handleSearch} />
+                <input type="text" className=" appearance-none border-none rounded w-full py-2 px-3 text-black dark:text-white bg-secondary dark:bg-dark-secondary focus:outline-none " id="searchInput" placeholder="Search in the blockchain..." onChange={this.handleSearch} />
                 <Search query={this.state.query} />
                 </div>
               </div>              
