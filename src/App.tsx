@@ -8,11 +8,9 @@ import { BlockchainContext } from "./BlockchainContext";
 import { Blockchains } from "./lib/blockchains";
 
 function App() {
-  let params = useParams();
-  console.log(params.blockchain)
   return (
     <div className="App">
-      <BlockchainContext.Provider value={params.blockchain}><Menu />
+      <BlockchainContext.Provider value={"devnet"}><Menu />
       <div className="min-h-screen">
       <Outlet/>
       </div>

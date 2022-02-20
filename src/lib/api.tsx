@@ -15,10 +15,10 @@ const explorer = {
             return fetch(network.slp_url + "/tokens").then((res:any) => res.json())
         },
         token: (address:string) => {
-          return fetch(network.slp_url + "/tokenWithMeta/"+address).then((res:any) => res.json())
+          return fetch(network.slp_url + "/token/"+address).then((res:any) => res.json())
       },
       tokenTransactions: (token_id:string) => {
-         return fetch(network.slp_url + "/transactions/"+token_id).then((res:any) => res.json())
+         return fetch(network.slp_url + "/transactions?tokenId="+token_id).then((res:any) => res.json())
       },
       transaction: (tx_id:string) => {
         return fetch(network.slp_url + "/transaction/"+tx_id).then((res:any) => res.json())

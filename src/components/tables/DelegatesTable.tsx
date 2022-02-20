@@ -219,7 +219,7 @@ class DelegatesTable extends React.Component<{status: string}, DelegatesTableSta
                   <span className="rounded-full bg-secondary dark:bg-dark-secondary p-2 text-greenish">#{delegate.rank}</span>
                 </td>
                 <td className="text-center">
-                <a href={`/${this.context}/wallet/${delegate.address}`} className="text-greenish">{delegate.username}</a>
+                <a href={`/wallet/${delegate.address}`} className="text-greenish">{delegate.username}</a>
                 </td>
                 <td className="text-center">{parseInt((parseInt(delegate.votes)/100000000).toFixed(0)).toLocaleString("us")} {this.state.network.symbol}  <span className="text-gray-600 dark:text-gray-400">{((100 * delegate.votes) / parseInt(this.state.supply)).toFixed(4)}%</span></td>
                 {this.props.status == "active" && <td className="text-center">

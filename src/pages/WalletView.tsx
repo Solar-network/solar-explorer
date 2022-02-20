@@ -131,12 +131,12 @@ function WalletView() {
                 Transactions
               </Tab>
 
-              <Tab key="tokens" className={tabClass}>
+{/*               <Tab key="tokens" className={tabClass}>
                 Token Holdings
               </Tab>
               <Tab key="token_ownership" className={tabClass}>
                 Token Ownership
-              </Tab>
+              </Tab> */}
               {delegate &&
                   <Tab key="delegate" className={tabClass}>
                   Delegate
@@ -150,7 +150,7 @@ function WalletView() {
             <Tab.Panel key="txs" className="text-black dark:text-white">
               <TransactionsTable wallet={wallet_address} type={-1} />
             </Tab.Panel>
-            <Tab.Panel
+{/*             <Tab.Panel
               key="tokens"
               className="text-black dark:text-white"
             >
@@ -159,7 +159,7 @@ function WalletView() {
             <Tab.Panel
               key="token_ownership"
               className="text-black dark:text-white"
-            ><TokenOwnershipTable wallet={wallet_address}/></Tab.Panel>
+            ><TokenOwnershipTable wallet={wallet_address}/></Tab.Panel> */}
             {delegate && 
             <Tab.Panel
             key="delegate"

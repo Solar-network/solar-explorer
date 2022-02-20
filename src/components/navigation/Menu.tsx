@@ -127,7 +127,7 @@ static contextType = BlockchainContext;
       <div className="mx-auto w-fit space-x-3">
               {navigation.links.map((hname, href) => (
                     <a
-                    href={"/"+blockchain+hname.route.url}
+                    href={hname.route.url}
                     className="text-[#ffffff] py-2 rounded-md dark:hover:bg-dark-hoverish px-2"
                     aria-current="page"
                     onClick={this.go}
@@ -140,16 +140,7 @@ static contextType = BlockchainContext;
 </div>
               <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
 <BlockchainMenu/>
-<button
-        type="button"
-        className="hidden bg-greenish p-1 rounded text-white hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 py-1 px-2 focus:ring-white flex font-bold"
-        onClick={() => this.setModalShow(true)}
-      >
-        <img src="/assets/img/currencies/ark.svg" className="h-4 mt-1 bg-white" alt="" />
-        <span className="ml-2">ARK Mainnet</span>
 
-        
-      </button>
                 <div className="ml-3 relative">
                   <div>
                     <button onClick={toggleTheme} className="text-white text-1xl"><BsFillSunFill  /></button>
@@ -175,7 +166,7 @@ static contextType = BlockchainContext;
             <div className="px-2 pt-2 pb-3 space-y-1">
             {navigation.links.map((hname, href) => (
               <a
-              href={"/"+blockchain+hname.route.url}
+              href={hname.route.url}
               className="text-white block px-3 py-2 rounded-md text-base font-medium"
               aria-current="page"
               

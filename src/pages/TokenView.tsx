@@ -98,16 +98,16 @@ function classNames(...classes: string[]) {
                 <td className="pl-4 w-1/4 text-center font-black">Timestamp</td>
                 <td><Timestamp value={token.tokenDetails.genesis_timestamp} /></td>
               </tr>
-              <tr className="bg-quartish dark:bg-dark-quartish dark:hover:bg-dark-hoverish dark:even:bg-dark-evenish hover:bg-hoverish cursor-pointer even:bg-evenish w-full h-14 z-10">
+              {/* <tr className="bg-quartish dark:bg-dark-quartish dark:hover:bg-dark-hoverish dark:even:bg-dark-evenish hover:bg-hoverish cursor-pointer even:bg-evenish w-full h-14 z-10">
                 <td className="pl-4 w-1/4 text-center font-black">Block</td>
                 <td><BlockId id={token.tokenStats.block_created_id}/></td>
-              </tr>
-              <tr className="bg-quartish dark:bg-dark-quartish dark:hover:bg-dark-hoverish dark:even:bg-dark-evenish hover:bg-hoverish cursor-pointer even:bg-evenish w-full h-14 z-10">
+              </tr> */}
+              {/* <tr className="bg-quartish dark:bg-dark-quartish dark:hover:bg-dark-hoverish dark:even:bg-dark-evenish hover:bg-hoverish cursor-pointer even:bg-evenish w-full h-14 z-10">
                 <td className="pl-4 w-1/4 text-center font-black">
                   Transaction
                 </td>
                 <td><ShortId id={token.tokenStats.creation_transaction_id}/></td>
-              </tr>
+              </tr> */}
             </tbody>
           </table>
         </div>

@@ -29,8 +29,7 @@ ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
       <Routes>
-      <Route path="/" element={<Navigate replace to="/devnet/home" />} />
-        <Route path="/:blockchain/" element={<App />}>
+        <Route path="/" element={<App />}>
           <Route path="home" element={<Dashboard />}/>
           <Route path="transactions" element={<Transactions />}/>
           <Route path="transactions/:tx_id" element={<TransactionView />}/>

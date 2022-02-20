@@ -5,7 +5,6 @@
         { "label": "Home", "route": { "url": "/home" } },
         { "label": "Transactions", "route": { "url": "/transactions" } },
         { "label": "Wallets", "route": { "url": "/wallets" } },
-        {"label":"Tokens", "route": {"url":"/tokens"}},
         { "label": "Delegates", "route": { "url": "/delegates" } }
       ]
     }

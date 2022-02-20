@@ -17,7 +17,7 @@ export const ShortId = ({ id }: ShortIdProps) => {
   return (
   <div className="content-center w-full flex px-2 justify-center">
     
-    <a href={`/${blockchain}/transactions/${id}`}><BsFillEyeFill className="mx-auto text-greenish" /></a>
+    <a href={`/transactions/${id}`}><BsFillEyeFill className="mx-auto text-greenish" /></a>
   </div>
 );}
 
@@ -39,7 +39,16 @@ export const BlockId = ({ id, className = "" }: BlockIdProps) => {
   let blockchain = useContext(BlockchainContext)
   return (
   <div className={`${className} w-full flex`}>
-    <a href={`/${blockchain}/blocks/${id}`} className="text-greenish hover:text-greenish hover:underline">{`${id.substr(0, 10)}...${id.substr(-10)}`}</a>
+    <a href={`/blocks/${id}`} className="text-greenish hover:text-greenish hover:underline">{`${id.substr(0, 10)}...${id.substr(-10)}`}</a>
+  </div>
+);}
+
+type TokenIdProps = { id: string, className?: string };
+export const TokenId = ({ id, className = "" }: TokenIdProps) => {
+  let blockchain = useContext(BlockchainContext)
+  return (
+  <div className={`${className} w-full flex`}>
+    <a href={`/token/${id}`} className="text-greenish hover:text-greenish hover:underline">{`${id.substr(0, 10)}...${id.substr(-10)}`}</a>
   </div>
 );}
 
@@ -88,7 +97,7 @@ export const ShortWallet = ({ id, multi }: ShortWalletProps) => {
     <div className="mx-auto `${className}`">
     
     {multi.length == 0 && 
-    <div>{known_wallet? <AiOutlineTeam className="text-greenish inline-block"/> : <FiCopy className="text-gray-600 dark:text-gray-400 mr-1 pt-1 mb-2 hover:text-white inline-block" onClick={() => {copytoClipboard(id)}} />} <a href={`/${blockchain}/wallet/${id}`} className="text-greenish hover:text-greenish hover:underline mb-1">{known_wallet? known_wallet.name : `${id.substr(0, 5)}...${id.substr(-5)}`}</a></div>}
+    <div>{known_wallet? <AiOutlineTeam className="text-greenish inline-block"/> : <FiCopy className="text-gray-600 dark:text-gray-400 mr-1 pt-1 mb-2 hover:text-white inline-block" onClick={() => {copytoClipboard(id)}} />} <a href={`/wallet/${id}`} className="text-greenish hover:text-greenish hover:underline mb-1">{known_wallet? known_wallet.name : `${id.substr(0, 5)}...${id.substr(-5)}`}</a></div>}
     {multi.length>0 &&
     <span className="text-greenish hover:underline mb-1"> <RiUserReceived2Line className="inline-block"/> {multi.length} recipients</span>
     }
@@ -105,7 +114,7 @@ export const ShortTx = ({ id }: ShortWalletProps) => {
   <div className="text-greenish flex content-center">
     <div className="mx-auto `${className}`">
     <FiCopy className="text-gray-600 dark:text-gray-400 mr-1 pt-1 mb-2 hover:text-white inline-block" onClick={() => {copytoClipboard(id)}} />
-    <a href={`/${blockchain}/transactions/${id}`} className="text-greenish hover:text-greenish hover:underline mb-1">{`${id.substr(0, 5)}...${id.substr(-5)}`}</a>
+    <a href={`/transactions/${id}`} className="text-greenish hover:text-greenish hover:underline mb-1">{`${id.substr(0, 5)}...${id.substr(-5)}`}</a>
     </div>
   </div>
 );}
@@ -118,7 +127,7 @@ export const LongWallet = ({ id, className }: ShortWalletProps) => {
   <div className="text-greenish flex content-center">
     <div className={className}>
     <FiCopy className="text-gray-600 dark:text-gray-400 mr-1 pt-1 mb-2 hover:text-white inline-block" onClick={() => {copytoClipboard(id)}} />
-    <a href={`/${blockchain}/wallet/${id}`} className="text-greenish hover:text-greenish hover:underline mb-1 inline-block">{`${id.substr(0, 10)}...${id.substr(-10)}`}</a>
+    <a href={`/wallet/${id}`} className="text-greenish hover:text-greenish hover:underline mb-1 inline-block">{`${id.substr(0, 10)}...${id.substr(-10)}`}</a>
     </div>
   </div>
 );}

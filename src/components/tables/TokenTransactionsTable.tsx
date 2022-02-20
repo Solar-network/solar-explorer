@@ -48,7 +48,7 @@ TokenTransactionsTableState
         .slp
         .tokenTransactions(this.props.token_id)
         .then((d:any) => {
-          this.setState({ transactions: d });
+          this.setState({ transactions: d.data });
         });
       } else {
         explorer
@@ -56,7 +56,7 @@ TokenTransactionsTableState
         .slp
         .tokenTransactions(this.props.token_id)
         .then((d:any) => {
-          this.setState({ transactions: d });
+          this.setState({ transactions: d.data });
         });
       }
     };

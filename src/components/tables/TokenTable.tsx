@@ -10,6 +10,7 @@ import {
   Timestamp,
   BlockId,
   BoolBadge,
+  TokenId,
 } from "./Cells";
 import explorer from "../../lib/api";
 
@@ -36,7 +37,7 @@ class TokenTable extends React.Component<{}, TokenTableState> {
     const getData = () => {
       explorer.on(blockchain).slp.tokens()
       .then((d:any) => {
-        this.setState({ tokens: d });
+        this.setState({ tokens: d.data });
       });
     }
     getData();
@@ -65,7 +66,7 @@ class TokenTable extends React.Component<{}, TokenTableState> {
                 <td className="text-center"><a href={`/${this.context}/tokens/${token.tokenDetails.tokenIdHex}`}>{token.tokenDetails.name}</a></td>
                 <td className="text-center">{token.tokenDetails.symbol}</td>
                 <td className="text-center"><ShortWallet id={token.tokenDetails.ownerAddress}/></td>
-                <td className="text-center"><BlockId id={token.tokenDetails.tokenIdHex} /></td>
+                <td className="text-center"><TokenId id={token.tokenDetails.tokenIdHex} /></td>
                 <td className="text-center">{parseInt(token.tokenStats.qty_token_circulating_supply).toLocaleString("us")} {token.tokenDetails.symbol}</td>
                 <td className="text-center"><BoolBadge value={token.tokenDetails.pausable} /></td>
                 <td className="text-center"><BoolBadge value={token.tokenDetails.mintable} /></td>

@@ -170,7 +170,7 @@ export function Search(props: {query:string}) {
         .on(blockchain)
         .core.api("wallets").get(props.query).then((d) => {
             if (d.body.data) {
-                setResult({query: props.query, searchResult: d.body.data.address, searchType:"Wallet", searchLink: `/${blockchain}/wallet/${d.body.data.address}`});
+                setResult({query: props.query, searchResult: d.body.data.address, searchType:"Wallet", searchLink: `/wallet/${d.body.data.address}`});
                 toggleShow(true)
             }
         }).catch(() => {
@@ -178,7 +178,7 @@ export function Search(props: {query:string}) {
             .on(blockchain)
             .core.api("transactions").get(props.query).then((d) => {
                 if (d.body.data) {
-                    setResult({query: props.query,searchResult: d.body.data.id, searchType:"Transaction", searchLink: `/${blockchain}/transactions/${d.body.data.id}`});
+                    setResult({query: props.query,searchResult: d.body.data.id, searchType:"Transaction", searchLink: `/transactions/${d.body.data.id}`});
                     toggleShow(true)
                 }
             }).catch(() => {
