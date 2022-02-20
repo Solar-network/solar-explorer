@@ -30,7 +30,7 @@ ReactDOM.render(
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<App />}>
-          <Route path="home" element={<Dashboard />}/>
+      <Route path="" element={<Dashboard />} />
           <Route path="transactions" element={<Transactions />}/>
           <Route path="transactions/:tx_id" element={<TransactionView />}/>
           <Route path="blocks/:block_id" element={<BlockView />}/>

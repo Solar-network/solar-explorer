@@ -2,7 +2,7 @@
   "lang": {
     "navigation": {
       "links": [
-        { "label": "Home", "route": { "url": "/home" } },
+        { "label": "Home", "route": { "url": "/" } },
         { "label": "Transactions", "route": { "url": "/transactions" } },
         { "label": "Wallets", "route": { "url": "/wallets" } },
         { "label": "Delegates", "route": { "url": "/delegates" } }

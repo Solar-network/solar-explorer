@@ -3,8 +3,6 @@ import { useContext } from 'react'
 import { BlockchainContext } from '../../BlockchainContext'
 import { Blockchains } from '../../lib/blockchains'
 
-
-
 export function BlockchainMenu() {
   let current_blockchain = useContext(BlockchainContext)
 

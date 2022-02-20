@@ -29,7 +29,7 @@ const tabClass = ({ selected }: { selected: boolean }) =>
     return true;
 }
 
-  
+
 export const TransactionView = () => {
   const { tx_id } = useParams();
   const blockchain = useContext(BlockchainContext);
@@ -108,7 +108,7 @@ export const TransactionView = () => {
             <Tab key="info" className={tabClass}>
                 <span className="text-black dark:text-white">Details</span>
               </Tab>
-              {slpTx [0] && <Tab key="slp" className={tabClass}>
+              {slpTx[0] && <Tab key="slp" className={tabClass}>
                 <span className="text-black dark:text-white">SLP Details</span>
               </Tab>}
             </Tab.List>
@@ -123,7 +123,7 @@ export const TransactionView = () => {
             <tr className=" hover:bg-hoverish dark:hover:bg-dark-hoverish cursor-pointer even:bg-evenish dark:even:bg-dark-evenish w-full h-14 z-10">
               <td className="pl-4 w-1/4 text-center font-bold">Status: </td>{" "}
               <td>
-                <span className="p-2 bg-green-700 text-center rounded">
+                <span className="p-2 bg-green-700 text-center rounded text-white">
                   Success
                 </span>
               </td>
@@ -164,8 +164,8 @@ export const TransactionView = () => {
         </table>
       </div>
             </Tab.Panel>
-{slpTx [0] && <Tab.Panel key="slp" className="text-black dark:text-white">
-            
+{slpTx[0] && <Tab.Panel key="slp" className="text-black dark:text-white">
+
             <div className="rounded bg-tertiary">
               <table className="w-full">
                 <tbody>
@@ -192,7 +192,7 @@ export const TransactionView = () => {
                     <td>{slpTx[0].transactionDetails.sendOutput.amount}</td>
                     </tr>
                   }
-                  
+
                   {slpTx[0].transactionDetails.note &&
                     <tr className="bg-quartish dark:bg-dark-quartish hover:bg-hoverish dark:hover:bg-dark-hoverish cursor-pointer even:bg-evenish dark:even:bg-dark-evenish w-full h-14 z-10">
                     <td className="pl-4 w-1/4 text-center font-black">Note</td>
@@ -201,20 +201,20 @@ export const TransactionView = () => {
                   }
                   <tr className="bg-quartish dark:bg-dark-quartish hover:bg-hoverish dark:hover:bg-dark-hoverish cursor-pointer even:bg-evenish dark:even:bg-dark-evenish w-full h-14 z-10">
                     <td className="pl-4 w-1/4 text-center font-black">Transaction Code</td>
-                    
-      
+
+
                      <td><textarea className="my-3 bg-secondary dark:bg-dark-secondary rounded w-2/3 h-48 p-3 outline-none focus:outline-none text-black dark:text-gray-400" readOnly value={tx.vendorField}></textarea></td>
                  </tr>
-      
+
                 </tbody>
               </table>
             </div>
-      
+
                   </Tab.Panel>}
           </Tab.Panels>
         </div>
       </Tab.Group>
-      
+
     </div>
   );
 };
