@@ -55,17 +55,22 @@ class Delegates extends React.Component<
       .all({ limit: delegates_count})
       .then((d) => {
         d.body.data.map((delegate) => {
-          switch (isForging(delegate.blocks.last.timestamp.human)) {
-            case 0:
-              forging += 1;
-              break;
-            case 1:
-              missed += 1;
-              break;
-            case 2:
-              notforging += 1;
-              break;
+          if (delegate.blocks.last) {
+            switch (isForging(delegate.blocks.last.timestamp.human)) {
+              case 0:
+                forging += 1;
+                break;
+              case 1:
+                missed += 1;
+                break;
+              case 2:
+                notforging += 1;
+                break;
+            }
+          } else {
+            notforging += 1;
           }
+          
         });
         this.setState({
           forging_status: {
