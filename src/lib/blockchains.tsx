@@ -11,8 +11,8 @@ export const Blockchains = [
     networks: [
       {
         name: "dev",
-        title: "Solar Devnet",
-        symbol: "dSXP",
+        title: "Solar Testnet",
+        symbol: "tSXP",
         slp_url:"https://slp.testnet.sh/api",
         coingecko_id: "",
         url: "https://sxp.testnet.sh/api/",
