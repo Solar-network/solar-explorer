@@ -206,6 +206,7 @@ class DelegatesTable extends React.Component<{status: string}, DelegatesTableSta
               <th>Votes</th>
               {this.props.status == "active" && <th className="">Forging</th>}
               <th className="">Last forged</th>
+              <th className="">Version</th>
             </tr>
           </thead>
 
@@ -228,11 +229,13 @@ class DelegatesTable extends React.Component<{status: string}, DelegatesTableSta
                 <td className="text-center">
                 {delegate.blocks.produced > 0 ? <Timestamp value={delegate.blocks.last.timestamp.human}/> : <span className="text-gray-600 dark:text-gray-400 italic">Never</span>  }
                 </td>
+                <td>{delegate.version? delegate.version : "-"}</td>
               </tr>
             ))}
             {this.state.loading &&
             [...Array(25)].map(() => (
               <tr className="bg-quartish dark:bg-dark-quartish w-full h-10 dark:even:bg-dark-evenish even:bg-evenish">
+              <td><div className="rounded bg-secondary dark:bg-[#1c2531] p-3 mx-2"></div></td>
               <td><div className="rounded bg-secondary dark:bg-[#1c2531] p-3 mx-2"></div></td>
               <td><div className="rounded bg-secondary dark:bg-[#1c2531] p-3 mx-2"></div></td>
               <td><div className="rounded bg-secondary dark:bg-[#1c2531] p-3 mx-2"></div></td>
