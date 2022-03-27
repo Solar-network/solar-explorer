@@ -10,13 +10,13 @@ export const Blockchains = [
     delegates: 53,
     networks: [
       {
-        name: "dev",
-        title: "Solar Testnet",
-        symbol: "tSXP",
+        name: "SXP",
+        title: "Solar Mainnet",
+        symbol: "SXP",
         slp_url:"https://slp.testnet.sh/api",
         coingecko_id: "",
-        url: "https://sxp.testnet.sh/api/",
-        subdomain: "devnet"
+        url: "https://sxp.mainnet.sh/api/",
+        subdomain: "mainnet"
       },
     ]
   },
