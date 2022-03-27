@@ -10,7 +10,7 @@ import { Blockchains } from "./lib/blockchains";
 function App() {
   return (
     <div className="App">
-      <BlockchainContext.Provider value={"devnet"}><Menu />
+      <BlockchainContext.Provider value={"SXP"}><Menu />
       <div className="min-h-screen">
       <Outlet/>
       </div>

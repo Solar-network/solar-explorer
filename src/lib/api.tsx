@@ -36,7 +36,7 @@ const explorer = {
       },
       known_wallets: () => {
         switch (blockchain_name) {
-          case "mainnet":
+          case "SXP":
             return [
               {
                   "type": "protocol",

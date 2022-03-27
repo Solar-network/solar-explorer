@@ -28,7 +28,7 @@ export const ShortCopy = ({ text }: ShortCopyProps) => {
   <div className="text-greenish flex content-center">
   <div className="mx-auto `${className}`">
   <FiCopy className="text-gray-600 dark:text-gray-400 mr-1 pt-1 mb-2 hover:text-white inline-block" onClick={() => {copytoClipboard(text)}} />
-  <a href="#" className="text-greenish hover:text-greenish hover:underline mb-1">{`${text.substr(0, 10)}...${text.substr(-10)}`}</a>
+  <a href="#" className="text-greenish hover:text-greenish hover:underline mb-1">{`${text}`}</a>
   </div>
 </div>
 );

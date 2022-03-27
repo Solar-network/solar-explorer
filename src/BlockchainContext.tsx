@@ -1,2 +1,2 @@
 import React from "react"
-export const BlockchainContext = React.createContext("ark");
+export const BlockchainContext = React.createContext("SXP");
